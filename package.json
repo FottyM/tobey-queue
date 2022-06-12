@@ -1,0 +1,25 @@
+{
+  "name": "tobey",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "worker": "node worker.js",
+    "worker-dev": "nodemon worker.js"
+  },
+  "author": "Fortunat Mutunda",
+  "license": "ISC",
+  "dependencies": {
+    "bull": "^4.8.3",
+    "express": "^4.18.1",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.17.0",
+    "eslint-config-xo": "^0.41.0",
+    "nodemon": "^2.0.16"
+  }
+}

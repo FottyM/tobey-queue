@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  database:
+    image: postgres
+    container_name: db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: tobey
+  
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+  sever:
+    image: wo/server
+    container_name: server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    command: npm run dev
+    depends_on:
+      - database
+    volumes:
+      - .:/app
+
+  worker:
+    image: wo/worker
+    container_name: worker
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: npm run worker-dev
+    depends_on:
+      - database
+      - redis
+    volumes:
+      - .:/app

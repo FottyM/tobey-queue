@@ -1,0 +1,6 @@
+# All
+Dockerfile
+docker-compose.yml
+node_modules
+.dockerignore
+.eslintrc.json
