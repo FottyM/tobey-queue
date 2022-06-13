@@ -30,11 +30,12 @@ app.get('/users/:id', async (req, res) => {
 });
 
 app.post('/users', async (req, res) => {
-  count++;
   const user = {
     name: req.body.name,
     email: req.body.email + count,
   };
+
+  count++;
 
   if (Object.keys(user).length !== 2) {
     res.status(400).json({error: 'Invalid user object'});
