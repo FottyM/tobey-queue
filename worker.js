@@ -1,7 +1,7 @@
 const client = require('./db-client');
 const {userQueue} = require('./queues');
 
-const concurrency = 10;
+const concurrency = 2;
 const delay = 1_000;
 
 const sleep = ms => new Promise(resolve => {
