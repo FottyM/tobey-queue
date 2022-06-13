@@ -2,7 +2,7 @@ const client = require('./src/db-client');
 const {userQueue} = require('./src/queues');
 
 const concurrency = 2;
-const delay = 1_000;
+const delay = 3_000;
 
 const sleep = ms => new Promise(resolve => {
   setTimeout(resolve, ms);
@@ -14,7 +14,7 @@ client.connect(err => {
     return;
   }
 
-  userQueue.process(concurrency, async job => {
+  userQueue.process('create_user', concurrency, async job => {
     console.log(`Processing job ${job.id}`);
 
     const {name, email} = job.data;
@@ -34,7 +34,7 @@ client.connect(err => {
   });
 
   userQueue.on('completed', data => {
-    console.error(`Job ${JSON.stringify(data, null, 2)} completed`);
+    console.error(`Job # ${data.id} data: ${JSON.stringify(data.data, null, 2)} completed`);
   });
 });
 
