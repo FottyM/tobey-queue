@@ -3,7 +3,6 @@ version: '3'
 services:
   database:
     image: postgres
-    container_name: db
     ports:
       - "5432:5432"
     environment:
@@ -13,7 +12,6 @@ services:
   
   redis:
     image: redis
-    container_name: redis
     ports:
       - "6379:6379"
 
