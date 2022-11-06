@@ -15,7 +15,7 @@ services:
     ports:
       - "6379:6379"
 
-  sever:
+  server:
     image: wo/server
     container_name: server
     build:
